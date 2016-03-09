@@ -1,0 +1,66 @@
+.navbar-custom {
+    background-color:#f5f5f5;
+    color:#333;
+    border-radius:0;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 0px;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#000;
+}
+
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #000;
+    background-color:transparent;
+}
+
+.navbar-custom .navbar-brand {
+    color:#333;
+}
+
+.pagehead {
+  padding-bottom: 0;
+  background-color: #fafafa;
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.breadcrumb {
+  font-size: 18px;
+    background-color: #fafafa;
+}
+.breadcrumb > li+li :before{
+  color: #666;
+}
+
+.nav-tabs {
+  border-bottom: 0
+}
+
+ul.nav-tabs > .active > a {
+    border-color: #d26911 #e5e5e5 transparent;
+    border-width: 3px 1px 1px;
+    border-radius: 3px 3px 0 0;
+}
+
+ul.nav-tabs > li > a {
+  color: #111;
+  font-size: 13px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+  border-color: #d26911 #e5e5e5 transparent;
+  border-width: 3px 1px 1px;
+  border-radius: 3px 3px 0 0;
+}
+
+tr > td > div.checkbox {
+  margin: 0;
+}
+
+tr {
+    cursor: pointer;
+}
