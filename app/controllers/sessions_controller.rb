@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
       authenticate!
     else
       access_token = session[:access_token]
-      scopes = []
 
       client = Octokit::Client.new \
         :client_id => ENV['GITHUB_KEY'],
@@ -25,7 +24,7 @@ class SessionsController < ApplicationController
       user = User.where(user_name: client.user.login).first_or_initialize
       user.avatar_url = client.user.avatar_url
       user.save
-
+      session[:user] = user
       redirect_to '/'
     end
   end
