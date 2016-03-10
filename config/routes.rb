@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :projects
+  resources :sessions
 
   root to: "projects#index"
-  get "/auth/:provider/callback" => "sessions#create"
+  get "/login" => "sessions#new"
+  get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
 
   # The priority is based upon order of creation: first created -> highest priority.

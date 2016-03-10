@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
-gem 'omniauth-github'
+gem 'octokit'
 
 group :development, :test do
   gem 'byebug'
