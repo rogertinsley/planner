@@ -2,28 +2,32 @@ class SessionsController < ApplicationController
 
   def new
     if !authenticated?
-        authenticate!
-      else
-        access_token = session[:access_token]
-        scopes = []
+      authenticate!
+    else
+      access_token = session[:access_token]
+      scopes = []
 
-        client = Octokit::Client.new \
-          :client_id => ENV['GITHUB_KEY'],
-          :client_secret => ENV['GITHUB_SECRET']
+      client = Octokit::Client.new \
+        :client_id => ENV['GITHUB_KEY'],
+        :client_secret => ENV['GITHUB_SECRET']
 
-        begin
-          client.check_application_authorization access_token
-        rescue => e
-          # request didn't succeed because the token was revoked so we
-          # invalidate the token stored in the session and render the
-          # index page so that the user can start the OAuth flow again
-          session[:access_token] = nil
-          return authenticate!
-        end
-
-        client = Octokit::Client.new :access_token => access_token
-        data = client.user
+      begin
+        client.check_application_authorization access_token
+      rescue => e
+        # request didn't succeed because the token was revoked so we
+        # invalidate the token stored in the session and render the
+        # index page so that the user can start the OAuth flow again
+        session[:access_token] = nil
+        return authenticate!
       end
+
+      client = Octokit::Client.new :access_token => access_token
+      user = User.where(user_name: client.user.login).first_or_initialize
+      user.avatar_url = client.user.avatar_url
+      user.save
+
+      redirect_to '/'
+    end
   end
 
   def create
