@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_before_filter :authorize
+
   def new
     if !authenticated?
       authenticate!
@@ -37,17 +39,5 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:access_token] = nil
-  end
-
-  private
-
-  def authenticated?
-    session[:access_token]
-  end
-
-  def authenticate!
-   client = Octokit::Client.new
-   url = client.authorize_url ENV['GITHUB_KEY'], :scope => 'user:email, repo'
-   redirect_to url
   end
 end
