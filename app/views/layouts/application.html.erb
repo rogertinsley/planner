@@ -4,8 +4,8 @@
 <head>
   <title>Planner</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-              <img alt="@<%= @user.user_name %>" class="avatar" height="20" src="<%= @user.avatar_url %>" width="20">
+              <img alt="@<%= current_user['user_name'] %>" class="avatar" height="20" src="<%= current_user['avatar_url'] %>" width="20">
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

@@ -22,7 +22,7 @@ module SessionsHelper
 
   def current_user
     @current_user ||= begin
-      session[:access_token]
+      session[:user]
     end
   end
 
