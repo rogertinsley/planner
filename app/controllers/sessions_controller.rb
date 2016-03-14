@@ -34,6 +34,9 @@ class SessionsController < ApplicationController
   def create
     result = Octokit.exchange_code_for_token(params[:code], ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'])
     session[:access_token] = result[:access_token]
+    user = User.where(user_name: client.user.login)
+    user.token = result[:access_token]
+    user.save
     redirect_to '/'
   end
 
