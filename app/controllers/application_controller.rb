@@ -5,12 +5,4 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :authorize
-  before_action :set_user
-
-  private
-
-   def set_user
-     @user = current_user
-   end
-
 end

@@ -22,8 +22,12 @@ module SessionsHelper
 
   def current_user
     @current_user ||= begin
-      session[:user]
+     User.find_by_user_name(session[:user_name]) if session[:user]['user_name']
     end
   end
 
+  def sign_out
+    session[:access_token] = nil
+    reset_session
+  end
 end

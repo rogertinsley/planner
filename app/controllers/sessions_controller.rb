@@ -7,13 +7,12 @@ class SessionsController < ApplicationController
       authenticate!
     else
       access_token = session[:access_token]
-
       client = Octokit::Client.new \
         :client_id => ENV['GITHUB_KEY'],
         :client_secret => ENV['GITHUB_SECRET']
-
       begin
         client.check_application_authorization access_token
+        redirect_to root_url
       rescue => e
         # request didn't succeed because the token was revoked so we
         # invalidate the token stored in the session and render the
@@ -23,24 +22,35 @@ class SessionsController < ApplicationController
       end
 
       client = Octokit::Client.new :access_token => access_token
-      user = User.where(user_name: client.user.login).first_or_initialize
-      user.avatar_url = client.user.avatar_url
-      user.save
-      session[:user] = user
-      redirect_to '/'
+user = User.where(user_name: client.user.login).first_or_initialize
+user.avatar_url = client.user.avatar_url
+user.save
+session[:user] = user
+redirect_to '/'
     end
   end
 
   def create
     result = Octokit.exchange_code_for_token(params[:code], ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'])
-    session[:access_token] = result[:access_token]
-    user = User.where(user_name: client.user.login)
+
+    # Create user model and save
+    access_token = session[:access_token]
+    client = Octokit::Client.new :access_token => access_token
+    session[:user_name] = client.user.login;
+    user = User.where(user_name: session[:user_name]).first_or_initialize
+    user.avatar_url = client.user.avatar_url
+    user.user_name = client.user.user_name
     user.token = result[:access_token]
     user.save
-    redirect_to '/'
+
+    session[:access_token] = result[:access_token]
+    session[:user] = user
+
+    redirect_to root_url
   end
 
   def destroy
-    session[:access_token] = nil
+    sign_out
+    redirect_to root_url
   end
 end
