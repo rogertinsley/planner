@@ -48,8 +48,8 @@
         <p>Enter the name of the GitHub repository you want to manage.</p>
         <div class="modal-body">
           <div class="form-group">
-            <label for="repository">Title</label>
-            <input type="text" class="form-control" id="repository" placeholder="Repository">
+            <label for="repository">Repository</label>
+            <%= select_tag "repository", options_for_select(@repositories) %>
           </div>
         </div>
       </div>

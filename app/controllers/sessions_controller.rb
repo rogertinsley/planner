@@ -26,25 +26,28 @@ class SessionsController < ApplicationController
   def create
     result = Octokit.exchange_code_for_token(params[:code], ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'])
 
+    # Set access_token
     session[:access_token] = result[:access_token]
 
     # Create user model and save
-    access_token = session[:access_token]
-    client = Octokit::Client.new :access_token => access_token
-    session[:user_name] = client.user.login;
-    user = User.where(user_name: session[:user_name]).first_or_initialize
-    user.avatar_url = client.user.avatar_url
-    user.user_name = client.user.user_name
-    user.token = result[:access_token]
-    user.save
+    client = Octokit::Client.new :access_token => session[:access_token]
+    login  = client.user.login
 
-    session[:user] = user
+    # Retrieve or create new user
+    user = User.where(user_name: login).first_or_initialize
+
+    # Set values
+    user.avatar_url = client.user.avatar_url
+    user.user_name  = client.user.login
+    user.token      = result[:access_token]
+
+    # Commit
+    user.save
 
     redirect_to root_url
   end
 
   def destroy
     sign_out
-    redirect_to root_url
   end
 end

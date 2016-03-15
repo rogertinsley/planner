@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.github.repositories 
+    @repositories = current_user.github.repositories.map { |r| r[:name] }
+    @projects = Project.all
   end
 
   # GET /projects/1
