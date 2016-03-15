@@ -14,6 +14,7 @@ gem 'puma'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'octokit'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'

@@ -21,9 +21,11 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= begin
-      session[:user]
-    end
+    @current_user ||= session[:access_token] && User.find_by_token(session[:access_token])
   end
 
+  def sign_out
+    @current_user = session[:access_token] = nil
+    redirect_to root_url
+  end
 end
