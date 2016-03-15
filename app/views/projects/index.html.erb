@@ -13,7 +13,7 @@
   <tbody>
 
     <% @projects.each do |project| %>
-      <tr>
+      <tr data-target="<%= project_path(project) %>">
         <td>
           <%= project.github_repository %>
         </td>
