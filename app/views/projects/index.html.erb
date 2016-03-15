@@ -1,11 +1,12 @@
 <h1 class="page-header">Select a project to manage</h1>
 
+<% if !@projects.any? %>
+  <div class="alert alert-info" role="alert"><strong>Heads up!</strong> There are no projects configured :trollface:</div>
+<% else %>
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Project ID</th>
       <th>Name</th>
-      <th>Project Lead</th>
       <th></th>
     </tr>
   </thead>
@@ -14,13 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td>
-          <%= project.identifier %>
-        </td>
-        <td>
-          <%= project.name %>
-        </td>
-        <td>
-          <%= project.project_lead %>
+          <%= project.github_repository %>
         </td>
         <td>
         </td>
@@ -29,6 +24,8 @@
 
   </tbody>
 </table>
+
+<% end %>
 
 <div class="pull-right">
   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
