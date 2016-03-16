@@ -17,9 +17,10 @@ gem 'octokit'
 gem 'simple_form'
 
 group :development, :test do
-  gem 'web-console', '~> 2.0'
+  gem 'byebug'
 end
 
 group :development do
+  gem 'web-console'
   gem 'spring'
 end
