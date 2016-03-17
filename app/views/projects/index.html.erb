@@ -1,36 +1,38 @@
-<h1 class="page-header">Select a project to manage</h1>
+<div class="container">
+  <h1 class="page-header">Select a project to manage</h1>
 
-<% if !@projects.any? %>
-  <div class="alert alert-info" role="alert"><strong>Heads up!</strong> There are no projects configured :trollface:</div>
-<% else %>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <% @projects.each do |project| %>
-      <tr data-target="<%= backlog_path(project.github_repository) %>">
-        <td>
-          <%= project.github_repository %>
-        </td>
-        <td>
-        </td>
+  <% if !@projects.any? %>
+    <div class="alert alert-info" role="alert"><strong>Heads up!</strong> There are no projects configured :trollface:</div>
+  <% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
       </tr>
-      <% end %>
+    </thead>
+    <tbody>
 
-  </tbody>
-</table>
+      <% @projects.each do |project| %>
+        <tr data-target="<%= backlog_path(project.github_repository) %>">
+          <td>
+            <%= project.github_repository %>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <% end %>
 
-<% end %>
+    </tbody>
+  </table>
 
-<div class="pull-right">
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Project
-  </button>
+  <% end %>
+
+  <div class="pull-right">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Project
+    </button>
+  </div>
+
+  <%= render 'new_project_form' %>
 </div>
-
-<%= render 'new_project_form' %>
