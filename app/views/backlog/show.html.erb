@@ -1,0 +1,39 @@
+<div class="pagehead">
+  <%= render partial: 'shared/breadcrumb' %>
+  <%= render partial: 'shared/navtabs' %>
+</div>
+
+<div class="container">
+
+   <!-- Tab panes -->
+   <div class="tab-content">
+   <div role="tabpanel" class="tab-pane active" id="backlog">
+
+     <div class="subnav">
+       <div class="pull-right">
+         <div class="btn-group" role="group">
+           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
+             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+             New Issue
+           </button>
+           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+             New Sprint
+           </button>
+         </div>
+       </div>
+     </div>
+
+    <%= render partial: 'shared/issue_table' %>
+
+    <div role="tabpanel" class="tab-pane" id="active-sprint">
+      <!-- Content goes here -->
+     </div>
+     <div role="tabpanel" class="tab-pane" id="reports">
+       <!-- Content goes here -->
+     </div>
+   </div>
+
+</div>
+
+<%= render partial: 'shared/new_issue_form' %>

@@ -11,7 +11,7 @@
 
   <%= render partial: 'shared/nav' %>
 
-  <div class="container body-content">
+  <div class="body-content">
     <%= content_for?(:content) ? yield(:content) : yield %>
   </div>
 

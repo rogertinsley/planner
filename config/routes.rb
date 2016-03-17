@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :projects
   resources :sessions
+  resources :backlog
 
   root to: "projects#index"
   get "/login" => "sessions#new"

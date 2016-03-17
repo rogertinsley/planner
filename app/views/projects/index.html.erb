@@ -13,7 +13,7 @@
   <tbody>
 
     <% @projects.each do |project| %>
-      <tr data-target="<%= project_path(project) %>">
+      <tr data-target="<%= backlog_path(project.github_repository) %>">
         <td>
           <%= project.github_repository %>
         </td>

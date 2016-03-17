@@ -1,5 +1,6 @@
 class BacklogController < ApplicationController
 
-  def index
+  def show
   end
+
 end
