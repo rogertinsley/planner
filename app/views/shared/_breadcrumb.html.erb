@@ -1,0 +1,10 @@
+<div class="pagehead-details container">
+  <!-- Bread crumb -->
+  <ol class="breadcrumb">
+    <li>
+      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+      <%= link_to "Projects", root_url %>
+    </li>
+    <li class="active"><strong><a href="#"><%= format_github_repository(@project.github_repository) %></a></strong></li>
+  </ol>
+</div>
