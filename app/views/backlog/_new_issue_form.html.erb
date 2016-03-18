@@ -15,7 +15,7 @@
         <div class="modal-body">
           <div class="modal-body">
             <%= f.input :title, label: 'Title' %>
-            <%= f.input :description, label: 'Description' %>
+            <%= f.input :description, label: 'Description',as: :text, input_html: { rows: 10 } %>
           </div>
         </div>
 
