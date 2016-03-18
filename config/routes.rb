@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :issues
   resources :projects
   resources :sessions
 
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get ":owner/:repo/backlog" => "backlog#show", as: :backlog
+  post ":owner/:repo/issue/create" => "issues#create", as: :create_issue
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

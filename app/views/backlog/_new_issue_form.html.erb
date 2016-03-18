@@ -9,16 +9,13 @@
         <h4 class="modal-title" id="myModalLabel">New issue</h4>
       </div>
 
-      <%= simple_form_for(Issue.new) do |f| %>
+      <%= simple_form_for Issue.new, :url => create_issue_path do |f| %>
 
         <!-- Body -->
         <div class="modal-body">
           <div class="modal-body">
             <%= f.input :title, label: 'Title' %>
             <%= f.input :description, label: 'Description' %>
-            <!--- This should really be in the route -->
-            <%= f.input :owner, :as => :hidden, :input_html => { :value => @project.owner } %>
-            <%= f.input :repo,  :as => :hidden, :input_html => { :value => @project.repository } %>
           </div>
         </div>
 
