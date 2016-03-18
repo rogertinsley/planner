@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   resources :issues
   resources :projects
   resources :sessions
-  resources :backlog
 
   root to: "projects#show"
   get "/login" => "sessions#new"
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
+  get ":id/backlog" => "backlog#show", as: :backlog
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
