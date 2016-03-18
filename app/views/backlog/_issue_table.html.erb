@@ -1,13 +1,26 @@
 <table class="table table-condensed table-hover">
-     <thead>
-       <tr>
-         <th></th>
-         <th>Issue #</th>
-         <th>Title</th>
-         <th>Estimate</th>
-         <th></th>
-       </tr>
-     </thead>
-      <tbody>
-      </tbody>
-    </table>
+  <thead>
+    <tr>
+      <th>Issue #</th>
+      <th>Title</th>
+      <th>Estimate</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td>
+          <%= issue.number %>
+        </td>
+        <td>
+          <%= issue.number %>
+        </td>
+        <td>
+          <%= issue.number %>
+        </td>
+        <td></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

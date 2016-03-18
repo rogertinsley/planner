@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  def show
+  def index
     @repositories = current_user.github.repositories.map { |r| r[:full_name] }
     @projects = Project.all
   end

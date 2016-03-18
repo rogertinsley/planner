@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   resources :projects
   resources :sessions
 
-  root to: "projects#show"
+  root to: "projects#index"
   get "/login" => "sessions#new"
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
-  get ":owner/:repo/backlog" => "backlog#show", as: :backlog
+  get ":owner/:repo/backlog" => "backlog#index", as: :backlog
   post ":owner/:repo/issue/create" => "issues#create", as: :create_issue
 
   # The priority is based upon order of creation: first created -> highest priority.
