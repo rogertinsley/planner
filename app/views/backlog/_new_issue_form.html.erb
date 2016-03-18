@@ -1,25 +1,34 @@
 <!-- Modal -->
-<div class="modal fade" id="new-issue-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="new-issue-modal" tabindex="-1" role="dialog" aria-labelledby="new-issue-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+      <!-- Header -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">New issue</h4>
       </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title">
+
+      <%= simple_form_for(Issue.new) do |f| %>
+
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="modal-body">
+            <%= f.input :title, label: 'Title' %>
+            <%= f.input :description, label: 'Description' %>
+            <%= f.input :owner, :as => :hidden, :input_html => { :value => @project.owner } %>
+            <%= f.input :repo,  :as => :hidden, :input_html => { :value => @project.repository } %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Description</label>
-          <textarea id="exampleInputPassword1" class="form-control" rows="6" placeholder="Description" required></textarea>
+
+        <!--  Footer -->
+        <div class="modal-footer">
+          <%= f.button :button, "Close", class: 'btn btn-default', :data => { :dismiss => "modal" } %>
+          <%= f.submit 'Create', class: 'btn btn-success' %>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+      <% end %>
+
     </div>
   </div>
 </div>

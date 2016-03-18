@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :issues
   resources :projects
   resources :sessions
   resources :backlog
 
-  root to: "projects#index"
+  root to: "projects#show"
   get "/login" => "sessions#new"
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
