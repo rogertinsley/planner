@@ -14,9 +14,9 @@
     <tbody>
 
       <% @projects.each do |project| %>
-        <tr data-target="<%= backlog_path(project.github_repository) %>">
+        <tr data-target="<%= backlog_path(project.full_name) %>">
           <td>
-            <%= project.github_repository %>
+            <%= project.full_name %>
           </td>
           <td>
           </td>
