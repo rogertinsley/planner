@@ -7,7 +7,7 @@ class BacklogController < ApplicationController
 
   private
   def set_project
-    @project = Project.find_by_full_name(params[:id])
+    @project = Project.find_by_repository(params[:repo])
   end
 
 end

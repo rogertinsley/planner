@@ -14,7 +14,7 @@
     <tbody>
 
       <% @projects.each do |project| %>
-        <tr data-target="<%= backlog_path(project.full_name) %>">
+        <tr data-owner="<%= project.owner %>" data-repo="<%= project.repository %>">
           <td>
             <%= project.full_name %>
           </td>

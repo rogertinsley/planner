@@ -4,7 +4,9 @@
 
 ready = ->
   $(".table > tbody > tr").on "click", ->
-    document.location = $(this).data("target")
+    owner = $(this).data("owner")
+    repo = $(this).data("repo")
+    document.location = "/" + owner + "/" + repo + "/backlog"
     return false;
 
 $(document).ready(ready)
