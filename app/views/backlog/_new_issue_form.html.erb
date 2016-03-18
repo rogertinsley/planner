@@ -16,6 +16,7 @@
           <div class="modal-body">
             <%= f.input :title, label: 'Title' %>
             <%= f.input :description, label: 'Description' %>
+            <!--- This should really be in the route -->
             <%= f.input :owner, :as => :hidden, :input_html => { :value => @project.owner } %>
             <%= f.input :repo,  :as => :hidden, :input_html => { :value => @project.repository } %>
           </div>
