@@ -1,44 +1,52 @@
 <div class="pagehead">
   <%= render partial: 'shared/breadcrumb' %>
-  <%= render partial: 'shared/navtabs' %>
+    <%= render partial: 'shared/navtabs' %>
 </div>
 
 <div class="container">
 
-   <!-- Tab panes -->
-   <div class="tab-content">
-     <div role="tabpanel" class="tab-pane active" id="backlog">
-        <div class="subnav">
-          <div class="pull-right">
-             <div class="btn-group" role="group">
-               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
-                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                 New Issue
-               </button>
-               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                 New Sprint
-               </button>
-             </div>
-           </div>
-         </div>
-        <%= render partial: 'issue_table' %>
-
-        <div class="pull-left">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Add to sprint
-              <span class="caret"></span>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="backlog">
+      <div class="subnav">
+        <div class="pull-right">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Issue
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Sprint 1</a></li>
-              <li><a href="#">Sprint 2</a></li>
-              <li><a href="#">Sprint 3</a></li>
-              <li><a href="#">Sprint 4</a></li>
-            </ul>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-milestone-modal">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Sprint
+            </button>
           </div>
         </div>
       </div>
+
+      <%= render partial: 'issue_table' %>
+
+        <div class="row">
+          <div class="pull-left">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Add to sprint
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Sprint 1</a></li>
+                <li><a href="#">Sprint 2</a></li>
+                <li><a href="#">Sprint 3</a></li>
+                <li><a href="#">Sprint 4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-header">
+          <h3>Sprints</h3>
+        </div>
+
+        <%= render partial: 'milestone_table' %>
+
+    </div>
 
     <div role="tabpanel" class="tab-pane" id="active-sprint">
       <!-- Content goes here -->
@@ -47,8 +55,9 @@
     <div role="tabpanel" class="tab-pane" id="reports">
       <!-- Content goes here -->
     </div>
-   </div>
+  </div>
 
 </div>
 
 <%= render partial: 'new_issue_form' %>
+<%= render partial: 'new_milestone_form' %>
