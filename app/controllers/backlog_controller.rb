@@ -1,9 +1,10 @@
 class BacklogController < ApplicationController
 
-  before_action :set_project, only: [:index, :show]
+  before_action :set_project, only: [:index]
 
   def index
-    @issues = current_user.github.list_issues(current_repo).map{ |i| [ i.html_url, i.number, i.title ] }
+    # https://api.github.com/repos/rogertinsley/g-maps/issues
+    @issues = current_user.github.list_issues current_repo
   end
 
   private
