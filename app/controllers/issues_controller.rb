@@ -8,7 +8,7 @@ class IssuesController < ApplicationController
 
   private
 
-    def issue_params
-      params.require(:issue).permit(:title, :description)
-    end
+  def issue_params
+    params.require(:issue).permit(:title, :description)
+  end
 end
