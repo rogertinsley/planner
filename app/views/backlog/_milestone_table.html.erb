@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Due in</th>
     </tr>
   </thead>
   <tbody>
@@ -10,7 +11,9 @@
         <td>
           <%= milestone.title %>
         </td>
-        <td></td>
+        <td>
+        <%= milestone.due_on.to_formatted_s(:long) %>
+      </td>
       </tr>
       <% end %>
   </tbody>
