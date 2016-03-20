@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="new-milestone-modal" tabindex="-1" role="dialog" aria-labelledby="new-milestone-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New issue</h4>
+      </div>
+
+      <%= simple_form_for Milestone.new, :url => create_milestone_path do |f| %>
+
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="modal-body">
+            <%= f.input :title, label: 'Title' %>
+            <%= f.input :description, label: 'Description',as: :text, input_html: { rows: 10 } %>
+          </div>
+        </div>
+
+        <!--  Footer -->
+        <div class="modal-footer">
+          <%= f.button :button, "Close", class: 'btn btn-default', :data => { :dismiss => "modal" } %>
+          <%= f.submit 'Create', class: 'btn btn-success' %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Due in</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @milestones.each do |milestone| %>
+      <tr>
+        <td>
+          <%= milestone.title %>
+        </td>
+        <td>
+        <%= milestone.due_on.to_formatted_s(:long) %>
+      </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
