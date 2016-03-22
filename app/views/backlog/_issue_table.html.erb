@@ -2,7 +2,8 @@
   <thead>
     <tr>
       <th style="width:10%">Issue #</th>
-      <th style="width:90%">Title</th>
+      <th style="width:50%">Title</th>
+      <th style="width:40%"></th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,11 @@
         </td>
         <td>
           <%= issue.title %>
+        </td>
+        <td>
+          <% issue.labels.each do |label| %>
+          <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
+          <% end %>
         </td>
       </tr>
       <% end %>
