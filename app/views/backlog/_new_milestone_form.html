@@ -6,7 +6,7 @@
       <!-- Header -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">New issue</h4>
+        <h4 class="modal-title" id="myModalLabel">New milestone</h4>
       </div>
 
       <%= simple_form_for Milestone.new, :url => create_milestone_path do |f| %>
@@ -15,7 +15,8 @@
         <div class="modal-body">
           <div class="modal-body">
             <%= f.input :title, label: 'Title' %>
-            <%= f.input :description, label: 'Description',as: :text, input_html: { rows: 10 } %>
+            <%= f.input :description, label: 'Description', as: :text, input_html: { rows: 10 } %>
+            <%= f.input :due_date, label: 'Due on', as: :string, input_html: { type: :date, placeholder: 'DD/MM/YYYY' } %>
           </div>
         </div>
 
