@@ -1,11 +1,9 @@
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
-      <th>Issue #</th>
-      <th>Title</th>
-      <th>Label</th>
-      <th>Estimate</th>
-      <th></th>
+      <th style="width:10%">Issue #</th>
+      <th style="width:50%">Title</th>
+      <th style="width:40%"></th>
     </tr>
   </thead>
   <tbody>
@@ -18,12 +16,10 @@
           <%= issue.title %>
         </td>
         <td>
-          label-goes-here
+          <% issue.labels.each do |label| %>
+          <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
+          <% end %>
         </td>
-        <td>
-          1d
-        </td>
-        <td></td>
       </tr>
       <% end %>
   </tbody>
