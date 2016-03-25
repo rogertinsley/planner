@@ -4,7 +4,7 @@ class BacklogController < ApplicationController
 
   def index
     # https://api.github.com/repos/rogertinsley/g-maps/issues
-    @issues = current_user.github.list_issues current_repo
+    @issues = current_user.github.list_issues current_repo, { :milestone => "none" }
     @milestones = current_user.github.list_milestones current_repo
   end
 
