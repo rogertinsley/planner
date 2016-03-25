@@ -24,24 +24,7 @@
       </div>
 
       <%= render partial: 'issue_table' %>
-
-        <div class="row">
-          <div class="pull-left">
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Add to sprint
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <% @milestones.each do |milestone| %>
-                <li><a href="#"><%= milestone.title %></a></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <%= render partial: 'milestones' %>
+      <%= render partial: 'milestones' %>
 
     </div>
 
