@@ -7,9 +7,6 @@ class MilestonesController < ApplicationController
     options = { :state => 'open', :description => milestone.description, :due_on => Time.parse(milestone.due_date) }
     current_user.github.create_milestone(current_repo, milestone.title, options)
 
-    # Create label
-    current_user.github.add_label(current_repo, milestone.title, "e6e6e6")
-
     flash[:success] = "Milestone created"
     redirect_to backlog_path
   end
