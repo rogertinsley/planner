@@ -1,0 +1,30 @@
+<%= render partial: 'shared/pagehead' %>
+
+  <div class="container">
+
+    <%= render partial: 'shared/flash_message' %>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="backlog">
+          <div class="subnav">
+
+            <%= render partial: 'backlog/issue_and_sprint_buttons' %>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <%= render partial: 'milestones' %>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="active-sprint">
+          <!-- Content goes here -->
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="reports">
+          <!-- Content goes here -->
+        </div>
+      </div>
+
+  </div>
