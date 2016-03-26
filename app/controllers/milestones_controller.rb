@@ -1,7 +1,11 @@
 class MilestonesController < ApplicationController
 
-  def create
+  def index
+    @issues = current_user.github.list_issues current_repo, { :milestone => "none" }
+    @milestones = current_user.github.list_milestones current_repo
+  end
 
+  def create
     # Create milestone
     milestone = Milestone.new(milestone_params)
     options = { :state => 'open', :description => milestone.description, :due_on => Time.parse(milestone.due_date) }

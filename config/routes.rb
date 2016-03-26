@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get ":owner/:repo/backlog" => "backlog#index", as: :backlog
+  get ":owner/:repo/backlog/milestones" => "milestones#index", as: :backlog_milestone
   post ":owner/:repo/issue/create" => "issues#create", as: :create_issue
   post ":owner/:repo/milestone/create" => "milestones#create", as: :create_milestone
 

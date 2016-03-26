@@ -1,7 +1,4 @@
-<div class="pagehead">
-  <%= render partial: 'shared/breadcrumb' %>
-  <%= render partial: 'shared/navtabs' %>
-</div>
+<%= render partial: 'shared/pagehead' %>
 
 <div class="container">
 
@@ -11,20 +8,25 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="backlog">
       <div class="subnav">
+
+        <!-- New Issue and New Sprint buttons -->
         <div class="pull-right">
           <div class="btn-group" role="group">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Issue
             </button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-milestone-modal">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Sprint
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Milestone
             </button>
           </div>
         </div>
+
+        <%= render partial: 'issue_and_sprint_buttons' %>
       </div>
 
+      <div class="clearfix"></div>
+
       <%= render partial: 'issue_table' %>
-      <%= render partial: 'milestones' %>
 
     </div>
 

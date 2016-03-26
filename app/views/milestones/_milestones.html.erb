@@ -1,7 +1,7 @@
 <% @milestones.each do |milestone| %>
   <div class="well">
 
-    <h4 class="media-heading"><%= milestone.title %> <small>Due by <%= milestone.due_on.to_formatted_s(:long_ordinal) %></small></h4>
+    <h4 class="media-heading"><%= milestone.title %> <small><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Due by <%= milestone.due_on.to_formatted_s(:long_ordinal) %></small></h4>
     <p class="lead">There are a total of <%= milestone.open_issues %> open issues and <%= milestone.closed_issues %> closed issues</p>
   </div>
 
