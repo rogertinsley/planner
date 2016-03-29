@@ -1,46 +1,42 @@
-<p class="lead">There are <%= @issues.count %> issues not assigned to any milestone.</p>
+<p class="lead">There are
+  <%= @issues.count %> issues not assigned to any milestone.</p>
 
-<table class="table table-condensed table-hover">
-  <thead>
-    <tr>
-      <th style="width:5%"></th>
-      <th style="width:10%">Issue #</th>
-      <th style="width:50%">Title</th>
-      <th style="width:35%"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @issues.each do |issue| %>
+<%= simple_form_for :milestone_issues,
+  :url => url_for(:action => 'update', :controller => 'issues'),
+  :method => 'post' do |f| %>
+
+  <table class="table table-condensed table-hover">
+    <thead>
       <tr>
-        <td>c</td>
-        <td>
-          <%= issue.number %>
-        </td>
-        <td>
-          <%= issue.title %>
-        </td>
-        <td>
-          <% issue.labels.each do |label| %>
-          <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
-          <% end %>
-        </td>
+        <th style="width:5%"></th>
+        <th style="width:10%">Issue #</th>
+        <th style="width:50%">Title</th>
+        <th style="width:35%"></th>
       </tr>
-      <% end %>
-  </tbody>
-</table>
-
-<div class="row">
-  <div class="pull-left">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Add to milestone
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <% @milestones.each do |milestone| %>
-        <li><a href="#"><%= milestone.title %></a></li>
+    </thead>
+    <tbody>
+      <% @issues.each do |issue| %>
+        <tr>
+          <td>
+            <%= f.input :issues, as: :boolean, label: false, value: issue.number   %>
+          </td>
+          <td>
+            <%= issue.number %>
+          </td>
+          <td>
+            <%= issue.title %>
+          </td>
+          <td>
+            <% issue.labels.each do |label| %>
+              <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
+    </tbody>
+  </table>
+
+  <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones %>
+  <%= f.submit 'Update', class: 'btn btn-success' %>
+
+  <% end %>
