@@ -7,6 +7,9 @@ class IssuesController < ApplicationController
     redirect_to backlog_path
   end
 
+  def update
+  end
+
   private
 
   def issue_params

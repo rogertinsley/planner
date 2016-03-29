@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get ":owner/:repo/backlog" => "backlog#index", as: :backlog
   get ":owner/:repo/backlog/milestones" => "milestones#index", as: :backlog_milestone
   post ":owner/:repo/issue/create" => "issues#create", as: :create_issue
+  post ":owner/:repo/issue/update" => "issues#update", as: :edit_issue
   post ":owner/:repo/milestone/create" => "milestones#create", as: :create_milestone
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,7 +1,9 @@
 <p class="lead">There are
   <%= @issues.count %> issues not assigned to any milestone.</p>
 
-<%= simple_form_for @milestone do |f| %>
+<%= simple_form_for :milestone_issues,
+  :url => url_for(:action => 'update', :controller => 'issues'),
+  :method => 'post' do |f| %>
 
   <table class="table table-condensed table-hover">
     <thead>
@@ -15,7 +17,9 @@
     <tbody>
       <% @issues.each do |issue| %>
         <tr>
-          <td><%= f.input :issues, as: :boolean%></td>
+          <td>
+            <%= f.input :issues, as: :boolean, label: false, value: issue.number   %>
+          </td>
           <td>
             <%= issue.number %>
           </td>
@@ -25,31 +29,14 @@
           <td>
             <% issue.labels.each do |label| %>
               <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
-              <% end %>
+            <% end %>
           </td>
         </tr>
         <% end %>
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="pull-left">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Milestone
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <% @milestones.each do |milestone| %>
-            <li>
-              <a href="#">
-                <%= milestone.title %>
-              </a>
-            </li>
-            <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones %>
+  <%= f.submit 'Update', class: 'btn btn-success' %>
 
   <% end %>

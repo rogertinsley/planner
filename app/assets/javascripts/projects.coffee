@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  $(".table > tbody > tr").on "click", ->
+  $("table.projects > tbody > tr").on "click", ->
     owner = $(this).data("owner")
     repo = $(this).data("repo")
     document.location = "/" + owner + "/" + repo + "/backlog"
