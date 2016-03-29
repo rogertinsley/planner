@@ -15,6 +15,10 @@ class MilestonesController < ApplicationController
     redirect_to backlog_path
   end
 
+  def assign_issue
+
+  end
+
   private
 
   def milestone_params
