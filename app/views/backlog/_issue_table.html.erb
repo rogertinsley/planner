@@ -1,42 +1,44 @@
 <p class="lead">There are
   <%= @issues.count %> issues not assigned to any milestone.</p>
 
-<%= simple_form_for :milestone_issues,
-  :url => url_for(:action => 'update', :controller => 'issues'),
-  :method => 'post' do |f| %>
+<% if @issues.any?  %>
 
-  <table class="table table-condensed table-hover">
-    <thead>
-      <tr>
-        <th style="width:5%"></th>
-        <th style="width:10%">Issue #</th>
-        <th style="width:50%">Title</th>
-        <th style="width:35%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @issues.each do |issue| %>
+  <%= simple_form_for :milestone_issues,
+    :url => url_for(:action => 'update', :controller => 'issues'),
+    :method => 'post' do |f| %>
+
+    <table class="table table-condensed table-hover">
+      <thead>
         <tr>
-          <td>
-            <%= f.input :issues, as: :check_boxes, label: false, collection: [['', issue.number]]   %>
-          </td>
-          <td>
-            <%= issue.number %>
-          </td>
-          <td>
-            <%= issue.title %>
-          </td>
-          <td>
-            <% issue.labels.each do |label| %>
-              <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
-            <% end %>
-          </td>
+          <th style="width:5%"></th>
+          <th style="width:10%">Issue #</th>
+          <th style="width:50%">Title</th>
+          <th style="width:35%"></th>
         </tr>
-        <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @issues.each do |issue| %>
+          <tr>
+            <td>
+              <%= f.input :issue_numbers, as: :check_boxes, label: false, collection: [['', issue.number]] %>
+            </td>
+            <td>
+              <%= issue.number %>
+            </td>
+            <td>
+              <%= issue.title %>
+            </td>
+            <td>
+              <% issue.labels.each do |label| %>
+                <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones, :value_method => :number %>
+    <%= f.submit 'Update', class: 'btn btn-success' %>
 
-  <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones %>
-  <%= f.submit 'Update', class: 'btn btn-success' %>
-
+    <% end %>
   <% end %>
