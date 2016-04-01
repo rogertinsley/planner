@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'octokit'
 gem 'simple_form'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'
