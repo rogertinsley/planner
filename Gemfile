@@ -16,6 +16,7 @@ gem 'font-awesome-sass'
 gem 'octokit'
 gem 'simple_form'
 gem 'redis'
+gem 'rack-mini-profiler'
 
 group :development, :test do
   gem 'byebug'
