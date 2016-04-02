@@ -19,3 +19,5 @@ production:
   encoding: unicode
   pool: 5
   timeout: 5000
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
