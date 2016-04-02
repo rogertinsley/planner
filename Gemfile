@@ -17,7 +17,6 @@ gem 'font-awesome-sass'
 gem 'octokit'
 gem 'simple_form'
 gem 'faraday-http-cache'
-gem 'rack-mini-profiler'
 
 group :development, :test do
   gem 'sqlite3'
@@ -27,6 +26,7 @@ end
 group :development do
   gem 'web-console'
   gem 'spring'
+  gem 'rack-mini-profiler'
 end
 
 group :production do
