@@ -15,7 +15,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'octokit'
 gem 'simple_form'
-gem 'redis'
+gem 'faraday-http-cache'
 gem 'rack-mini-profiler'
 
 group :development, :test do
