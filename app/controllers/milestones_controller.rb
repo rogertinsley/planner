@@ -1,8 +1,12 @@
 class MilestonesController < ApplicationController
 
   def index
-    @issues = current_user.github.list_issues current_repo, { :milestone => "none" }
-    @milestones = current_user.github.list_milestones current_repo
+    @issues = Rails.cache.fetch("#{repo_name}/issues") do
+      current_user.github.list_issues current_repo, { :milestone => "none" }
+    end
+    @milestones = Rails.cache.fetch("#{repo_name}/milestones") do
+      current_user.github.list_milestones current_repo
+    end
   end
 
   def create
@@ -10,7 +14,7 @@ class MilestonesController < ApplicationController
     milestone = Milestone.new(milestone_params)
     options = { :state => 'open', :description => milestone.description, :due_on => Time.parse(milestone.due_date) }
     current_user.github.create_milestone(current_repo, milestone.title, options)
-
+    Rails.cache.delete("#{repo_name}/milestones")
     flash[:success] = "Milestone created"
     redirect_to backlog_path
   end
