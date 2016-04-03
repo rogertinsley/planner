@@ -3,6 +3,7 @@ class IssuesController < ApplicationController
   def create
     issue = Issue.new(issue_params)
     github_issue = current_user.github.create_issue(current_repo, issue.title, issue.description)
+    Rails.cache.delete("#{repo_name}/issues")
     flash[:success] = "Issue created"
     redirect_to backlog_path
   end

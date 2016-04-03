@@ -4,8 +4,12 @@ class BacklogController < ApplicationController
 
   def index
     # https://api.github.com/repos/rogertinsley/g-maps/issues
-    @issues = current_user.github.list_issues current_repo, { :milestone => "none" }
-    @milestones = current_user.github.list_milestones current_repo
+    @issues = Rails.cache.fetch("#{repo_name}/issues") do
+      current_user.github.list_issues current_repo, { :milestone => "none" }
+    end
+    @milestones = Rails.cache.fetch("#{repo_name}/milestones") do
+      current_user.github.list_milestones current_repo
+    end
   end
 
   private
