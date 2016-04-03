@@ -17,7 +17,6 @@ gem 'font-awesome-sass'
 gem 'octokit'
 gem 'simple_form'
 gem 'faraday-http-cache'
-gem 'puma_worker_killer'
 
 group :development, :test do
   gem 'sqlite3'

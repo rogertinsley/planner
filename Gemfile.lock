@@ -71,7 +71,6 @@ GEM
       faraday (~> 0.8)
     font-awesome-sass (4.5.0)
       sass (>= 3.2)
-    get_process_mem (0.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -98,9 +97,6 @@ GEM
       sawyer (~> 0.7.0, >= 0.5.3)
     pg (0.18.4)
     puma (3.1.1)
-    puma_worker_killer (0.0.6)
-      get_process_mem (~> 0.2)
-      puma (>= 2.7, < 4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -196,7 +192,6 @@ DEPENDENCIES
   octokit
   pg
   puma
-  puma_worker_killer
   quiet_assets
   rack-mini-profiler
   rails (= 4.2.5.1)
