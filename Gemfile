@@ -21,6 +21,8 @@ gem 'faraday-http-cache'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
+  gem 'better_errors'
+  gem 'quiet_assets'
 end
 
 group :development do
@@ -32,4 +34,5 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'puma_worker_killer'
 end
