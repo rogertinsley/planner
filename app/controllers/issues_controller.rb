@@ -17,7 +17,7 @@ class IssuesController < ApplicationController
     issue_numbers.each do |issue_number|
        current_user.github.update_issue(current_repo, issue_number.to_i, :milestone => milestone)
     end
-
+    Rails.cache.delete("#{repo_name}/issues")
     flash[:success] = "Issue(s) assigned to milestone"
     redirect_to backlog_path
   end
