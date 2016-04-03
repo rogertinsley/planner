@@ -1,5 +1,4 @@
-<p class="lead">There are
-  <%= @issues.count %> issues not assigned to any milestone.</p>
+<p class="lead">There are <%= @issues.count %> issues not assigned to any milestone.</p>
 
 <% if @issues.any?  %>
 
@@ -31,14 +30,20 @@
             <td>
               <% issue.labels.each do |label| %>
                 <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
-              <% end %>
+                <% end %>
             </td>
           </tr>
           <% end %>
       </tbody>
     </table>
-    <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones, :value_method => :number %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :milestone, :required => false, label: 'Milestone', collection: @milestones, :value_method => :number %>
+      </div>
+    </div>
     <%= f.submit 'Update', class: 'btn btn-success' %>
 
-    <% end %>
   <% end %>
+
+<% end %>
