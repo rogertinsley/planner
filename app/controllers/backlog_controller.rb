@@ -1,15 +1,11 @@
 class BacklogController < ApplicationController
+  include BacklogHelper
 
   before_action :set_project, only: [:index]
 
   def index
-    # https://api.github.com/repos/rogertinsley/g-maps/issues
-    @issues = Rails.cache.fetch("#{repo_name}/issues") do
-      current_user.github.list_issues current_repo, { :milestone => "none" }
-    end
-    @milestones = Rails.cache.fetch("#{repo_name}/milestones") do
-      current_user.github.list_milestones current_repo
-    end
+    @issues     = fetch_issues
+    @milestones = fetch_milestones
   end
 
   private
