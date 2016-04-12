@@ -1,38 +1,40 @@
 <div class="container">
-  <h1 class="page-header">Select a project to manage</h1>
 
-  <% if !@projects.any? %>
-    <div class="alert alert-info" role="alert"><strong>Heads up!</strong> There are no projects configured :trollface:</div>
-  <% else %>
-  <table class="table table-hover projects">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th></th>
+<h1 class="page-header">Select a project to manage</h1>
+
+<% if !@projects.any? %>
+  <div class="alert alert-info" role="alert"><strong>Heads up!</strong> There are no projects configured :trollface:</div>
+<% else %>
+<table class="table table-hover projects">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @projects.each do |project| %>
+      <tr data-owner="<%= project.owner %>" data-repo="<%= project.repository %>">
+        <td>
+          <%= project.full_name %>
+        </td>
+        <td>
+        </td>
       </tr>
-    </thead>
-    <tbody>
+      <% end %>
 
-      <% @projects.each do |project| %>
-        <tr data-owner="<%= project.owner %>" data-repo="<%= project.repository %>">
-          <td>
-            <%= project.full_name %>
-          </td>
-          <td>
-          </td>
-        </tr>
-        <% end %>
+  </tbody>
+</table>
 
-    </tbody>
-  </table>
+<% end %>
 
-  <% end %>
-
-  <div class="pull-right">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Project
-    </button>
-  </div>
-
-  <%= render 'new_project_form' %>
+<div class="pull-right">
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Project
+  </button>
 </div>
+
+</div>
+
+<%= render 'new_project_form' %>

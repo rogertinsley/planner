@@ -19,9 +19,13 @@ class MilestonesController < ApplicationController
     redirect_to backlog_path
   end
 
+  def show
+    @milestone = current_user.github.milestone(current_repo, params[:id])
+  end
+
   private
 
   def milestone_params
-    params.require(:milestone).permit(:title, :description, :due_date)
+    params.require(:milestone).permit(:title, :description, :due_date, :id)
   end
 end

@@ -5,7 +5,7 @@
 ready = ->
   $(".well").on "click", ->
     url = $(this).data("url")
-    window.open(url, "_blank")
+    document.location = url
     return false;
 
 $(document).ready(ready)

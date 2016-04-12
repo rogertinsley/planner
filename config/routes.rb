@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   resources :sessions
 
   root to: "projects#index"
+
   get "/login" => "sessions#new"
   get "/auth/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get ":owner/:repo/backlog" => "backlog#index", as: :backlog
-  get ":owner/:repo/backlog/milestones" => "milestones#index", as: :backlog_milestone
+  get ":owner/:repo/milestones" => "milestones#index", as: :backlog_milestone
+  get ":owner/:repo/milestones/:id/show" => "milestones#show", as: :milestone_details
+
   post ":owner/:repo/issue/create" => "issues#create", as: :create_issue
   post ":owner/:repo/issue/update" => "issues#update", as: :edit_issue
   post ":owner/:repo/milestone/create" => "milestones#create", as: :create_milestone
