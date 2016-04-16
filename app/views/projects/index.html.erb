@@ -1,5 +1,3 @@
-<div class="container">
-
 <h1 class="page-header">Select a project to manage</h1>
 
 <% if !@projects.any? %>
@@ -33,8 +31,6 @@
   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-project">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Project
   </button>
-</div>
-
 </div>
 
 <%= render 'new_project_form' %>

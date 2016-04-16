@@ -1,44 +1,38 @@
-<%= render partial: 'shared/pagehead' %>
+<%= render partial: 'shared/flash_message' %>
 
-<div class="container">
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="backlog">
+    <div class="subnav">
 
-  <%= render partial: 'shared/flash_message' %>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="backlog">
-      <div class="subnav">
-
-        <!-- New Issue and New Sprint buttons -->
-        <div class="pull-right">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Issue
-            </button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-milestone-modal">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Milestone
-            </button>
-          </div>
+      <!-- New Issue and New Sprint buttons -->
+      <div class="pull-right">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new-issue-modal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Issue
+          </button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#new-milestone-modal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Milestone
+          </button>
         </div>
-
-        <%= render partial: 'issue_and_sprint_buttons' %>
       </div>
 
-      <div class="clearfix"></div>
-
-      <%= render partial: 'issue_table' %>
-
+      <%= render partial: 'issue_and_sprint_buttons' %>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="active-sprint">
-      <!-- Content goes here -->
-    </div>
+    <div class="clearfix"></div>
 
-    <div role="tabpanel" class="tab-pane" id="reports">
-      <!-- Content goes here -->
-    </div>
+    <%= render partial: 'issue_table' %>
+
   </div>
 
+  <div role="tabpanel" class="tab-pane" id="active-sprint">
+    <!-- Content goes here -->
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="reports">
+    <!-- Content goes here -->
+  </div>
 </div>
 
 <%= render partial: 'new_issue_form' %>
