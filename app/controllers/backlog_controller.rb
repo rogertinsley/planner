@@ -2,10 +2,10 @@ class BacklogController < ApplicationController
   include BacklogHelper
 
   before_action :set_project, only: [:index]
+  before_action :fetch_issues, only: [:index]
+  before_action :fetch_milestones, only: [:index]
 
   def index
-    @issues     = fetch_issues
-    @milestones = fetch_milestones
   end
 
   private
