@@ -1,1 +1,37 @@
-<h2><%= @milestone.title %></h1>
+
+    <div class="subnav">
+      <%= render partial: 'backlog/issue_and_sprint_buttons' %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <h2>
+      <%= @milestone.title %> <small><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Due by <%= @milestone.due_on.to_formatted_s(:long_ordinal) %></small>
+    </h2>
+
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th style="width:10%">Issue #</th>
+          <th style="width:50%">Title</th>
+          <th style="width:35%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @issues_in_milestone.each do |issue| %>
+          <tr>
+            <td>
+              <%= issue.number %>
+            </td>
+            <td>
+              <%= issue.title %>
+            </td>
+            <td>
+              <% issue.labels.each do |label| %>
+                <span class="label" style="background-color: #<%= label.color %>"><%= label.name %></span>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>

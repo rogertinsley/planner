@@ -18,7 +18,9 @@ class MilestonesController < ApplicationController
   end
 
   def show
-    @milestone = current_user.github.milestone(current_repo, params[:id])
+    milestone = params[:id]
+    @milestone = current_user.github.milestone(current_repo, milestone)
+    @issues_in_milestone = current_user.github.list_issues current_repo, { :milestone => milestone }
   end
 
   private
