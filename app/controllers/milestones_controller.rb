@@ -1,7 +1,8 @@
 class MilestonesController < ApplicationController
+  include BacklogHelper
 
-  before_action :set_issues, only: [:index, :show]
-  before_action :set_milestones, only: [:index, :show]
+  before_action :fetch_issues, only: [:index, :show]
+  before_action :fetch_milestones, only: [:index, :show]
 
   def index
   end
@@ -21,18 +22,6 @@ class MilestonesController < ApplicationController
   end
 
   private
-
-  def set_issues
-    @issues = Rails.cache.fetch("#{repo_name}/issues") do
-      current_user.github.list_issues current_repo, { :milestone => "none" }
-    end
-  end
-
-  def set_milestones
-    @milestones = Rails.cache.fetch("#{repo_name}/milestones") do
-      current_user.github.list_milestones current_repo
-    end
-  end
 
   def milestone_params
     params.require(:milestone).permit(:title, :description, :due_date, :id)

@@ -4,16 +4,22 @@
 <head>
   <title>Planner</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-  <%= render partial: 'shared/nav' %>
+    <%= render partial: 'shared/nav' %>
 
-  <div class="body-content">
-    <%= content_for?(:content) ? yield(:content) : yield %>
-  </div>
+    <div class="body-content">
+      <%= render partial: 'shared/pagehead' %>
+
+        <div class="container">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
+    </div>
 
 </body>
+
 </html>
